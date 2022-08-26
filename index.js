@@ -49,5 +49,10 @@ document.getElementById("btnSearch").onclick = async function () {
     localStorage.setItem("historial", historico+'||'+search);
     console.log(localStorage.getItem("historial"));
 };
+document.getElementById("btnClear").onclick = async function () {
+   document.getElementById("search").value = '';
+   document.getElementById("imagenP").src = './who.jfif'
+
+};
 
 console.log('historial:',localStorage.getItem("historial"));
