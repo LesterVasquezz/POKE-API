@@ -28,6 +28,9 @@ const fetchPokemon = () => {
             let pokeImg = data.sprites.front_default; // esto obtiene la url de la imagen
             pokeImage(pokeImg);
             console.log(pokeImg);
+            let historial = JSON.parse(localStorage.getItem("historial"))||[];
+            historial.push(data)
+            localStorage.setItem("historial", JSON.stringify(historial));
         }
     });
 }
@@ -38,12 +41,3 @@ const pokeImage = (url) => { // una funcion que usamos para mandar la nueva url 
     pokePhoto.src = url;
 }
 
-
-
-var historial = JSON.parse(localStorage.getItem("historial"))||[];
-//aca se realizo la busqueda 
-let recienteBusqueda = {}
-//guardado de la busqueda 
-historial.push(recienteBusqueda)
-//guardo de la busqueda global 
-localStorage.setItem("historial", JSON.stringify(busqueda));
