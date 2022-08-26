@@ -52,6 +52,7 @@ document.getElementById("btnSearch").onclick = async function () {
 document.getElementById("btnClear").onclick = async function () {
    document.getElementById("search").value = '';
    document.getElementById("imagenP").src = './who.jfif'
+   document.getElementById("nombre").innerHTML ='Nombre';
 
 };
 
