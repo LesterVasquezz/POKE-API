@@ -48,7 +48,7 @@ function html(dataPokemon = '', html) {
 
 document.getElementById("btnSearch").onclick = async function () {
     const search = document.getElementById("search").value;
-    const dataPokemon = await getAPI(search);
+    const dataPokemon = await getAPI(search.toLowerCase());
     console.log(dataPokemon);
     html(dataPokemon, "divPokemon");
 
