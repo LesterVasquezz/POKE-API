@@ -1,11 +1,11 @@
 async function getAPI(pokemon) {
     try {
         let url = "https://pokeapi.co/api/v2/pokemon/"+pokemon;
-        
+
         console.log("URL a llamar", url);
         const response = await fetch(url);
         const data = await response.json();
-        
+
         return data;
     } catch (error) {
         document.getElementById('divPokemon').innerHTML = 'No existe pokemon';
@@ -33,7 +33,7 @@ function html(dataPokemon = '', html) {
                 <div class="cardContainer" id="${dataPokemon.id}">
                     <div class="cardImgContainer">
                         <p>
-                            nombre=${dataPokemon.name}: 
+                            nombre=${dataPokemon.name} 
                         </p>
                         <button class="linkCard" onclick="console.log('Recipe ID: ',${dataPokemon.id})">
                             <img class="imgCard" src="${dataPokemon.sprites.front_default}">
@@ -51,7 +51,7 @@ document.getElementById("btnSearch").onclick = async function () {
     const dataPokemon = await getAPI(search);
     console.log(dataPokemon);
     html(dataPokemon, "divPokemon");
-    
+
     ///Guardar en sesión
     let historico = localStorage.getItem("historial");
     localStorage.setItem("historial", historico+'||'+search);
