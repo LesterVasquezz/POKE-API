@@ -9,7 +9,7 @@ async function getAPI(pokemon) {
         return data;
     } catch (error) {
         document.getElementById("nombre").innerHTML ='No existe pokemon';
-        document.getElementById("imagenP").src = 'pokemon-sad.gif'
+        document.getElementById("imagenP").src = './pokemon-sad.gif'
         console.log('error',error);
     }
 }
