@@ -8,8 +8,8 @@ async function getAPI(pokemon) {
 
         return data;
     } catch (error) {
-        document.getElementById('divPokemon').innerHTML = 'No existe pokemon';
-        console.log(document.getElementById('divPokemon').innerHTML);
+        document.getElementById("nombre").innerHTML ='No existe pokemon';
+        document.getElementById("imagenP").src = '/img/pokemon-sad.gif'
         console.log('error',error);
     }
 }
@@ -28,19 +28,11 @@ function html(dataPokemon = '', html) {
     const recipesGoInDiv = document.getElementById(html);
     recipesGoInDiv.innerHTML = ""; //Clean element Before Filling
     const adding_recipe = document.createElement("div");
-        adding_recipe.innerHTML = `
-            <div class="card">
-                <div class="cardContainer" id="${dataPokemon.id}">
-                    <div class="cardImgContainer">
-                        <p>
-                            nombre=${dataPokemon.name} 
-                        </p>
-                        <button class="linkCard" onclick="console.log('Recipe ID: ',${dataPokemon.id})">
-                            <img class="imgCard" src="${dataPokemon.sprites.front_default}">
-                        </button>
-                    </div>
-                </div>
-            </div>`;
+    const changingImage = document.getElementById("imagenP");
+    changingImage.src =  dataPokemon.sprites.front_default;
+
+    const changingName = document.getElementById("nombre");
+    changingName.innerHTML = "#" + dataPokemon.id + " " + String(dataPokemon.name).toUpperCase();
     recipesGoInDiv.appendChild(adding_recipe);
     //console.log(dataPokemon);
 }
@@ -48,7 +40,7 @@ function html(dataPokemon = '', html) {
 
 document.getElementById("btnSearch").onclick = async function () {
     const search = document.getElementById("search").value;
-    const dataPokemon = await getAPI(search.toLowerCase());
+    const dataPokemon = await getAPI(String(search).toLowerCase());
     console.log(dataPokemon);
     html(dataPokemon, "divPokemon");
 
